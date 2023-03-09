@@ -11,7 +11,7 @@ public class PastCalculatins {
             System.out.println(l);
         }
         UI ui = new UI();
-        ui.ui();
+        ui.menu();
     }
 }
 
