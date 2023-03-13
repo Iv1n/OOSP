@@ -1,3 +1,5 @@
+import static java.lang.Math.pow;
+
 public class Calculations {
     private String[] tokens;
     private int pos;
@@ -29,25 +31,41 @@ public class Calculations {
         return first;
     }
 
-    private double miltiply(){
-        double first = factor();
+    private double miltiply() {
+        double first = this.factor();
 
-        while (pos < tokens.length) {
-            String operator = tokens[pos];
-            if (!operator.equals("*") && !operator.equals("/")){
+        while(this.pos < this.tokens.length) {
+            String operator = this.tokens[this.pos];
+            if (!operator.equals("*") && !operator.equals("/") && !operator.contains("%") &&
+                    !operator.equals("^") && !operator.equals("//")) {
                 break;
-            } else {
-                pos++;
             }
 
-            double second = factor();
+            ++this.pos;
+            double second = this.factor();
+
             if (operator.equals("*")) {
                 first *= second;
             }
-            else {
+            if (operator.equals("/")) {
                 first /= second;
             }
+            if (operator.equals("%")){
+                first %= second;
+            }
+            if (operator.equals("^")) {
+                if (second == 1) {
+                    return first;
+                }
+                else {
+                    return first * pow(first,second - 1);
+                }
+            }
+            if (operator.equals("//")){
+                first = Math.floor(first/second);
+            }
         }
+
         return first;
     }
 
