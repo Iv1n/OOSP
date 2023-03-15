@@ -18,8 +18,14 @@ public class EquationCalculations {
         PastCalculatins past = new PastCalculatins();
         past.uravneny(n);
 
+        WorkingWithNotepad notePad = new WorkingWithNotepad();
+        notePad.writingToFile(n);
+
         UI ui = new UI();
         ui.menu();
+
     }
+
+
 
 }

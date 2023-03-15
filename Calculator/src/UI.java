@@ -21,10 +21,10 @@ public class UI {
         System.out.println("---------------------Калькулятор----------------------");
         System.out.println("Чтобы открыть прошлые вычисления нажмите 1");
         System.out.println("Чтобы получить решение нажмите 2");
-        System.out.println("Чтобы выйти нажмите 3");
+        System.out.println("Чтобы выйти нажмите 9");
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        if (n==1 | n==2 | n==3) {
+        if (n==1 | n==2 | n==9) {
             if (n == 1) {
                 PastCalculatins pastCalculatins = new PastCalculatins();
                 pastCalculatins.pastUr();
@@ -33,7 +33,7 @@ public class UI {
                 EquationCalculations op = new EquationCalculations();
                 op.enub();
             }
-            if (n == 3) {
+            if (n == 9) {
                 System.out.println("До Свидания");
                 System.exit(0);
             }
