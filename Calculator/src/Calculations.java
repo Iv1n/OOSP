@@ -62,10 +62,24 @@ public class Calculations {
                 }
             }
             if (operator.equals("//")){
-                first = Math.floor(first/second);
+                if (first>0 && second>0) {
+                    first = Math.floor(first/second);
+                    return first;
+                }
+                if (first<0 && second<0){
+                    first = Math.floor(first/second);
+                    return first;
+                }
+                if (first>0 && second<0) {
+                    first = Math.ceil(first/second);
+                    return first;
+                }
+                if (first<0 && second>0){
+                    first = Math.ceil(first/second);
+                    return first;
+                }
             }
         }
-
         return first;
     }
 
@@ -76,18 +90,31 @@ public class Calculations {
             pos++;
             result = calculate();
             String closBracket;
-            if (pos < tokens.length){
+            if (pos < tokens.length) {
                 closBracket = tokens[pos];
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("Не найдено ')'");
             }
-            if (closBracket.equals(")")){
+            if (closBracket.equals(")")) {
                 pos++;
                 return result;
-            }
-            else new IllegalArgumentException("ожидали ')' но появился символ " + closBracket + "");
+            } else new IllegalArgumentException("ожидали ')' но появился символ " + closBracket + "");
         }
+        if (next.equals("[")) {
+            pos++;
+            result = calculate();
+            String closBracket;
+            if (pos < tokens.length) {
+                closBracket = tokens[pos];
+            } else {
+                throw new IllegalArgumentException("Не найдено ']'");
+            }
+            if (closBracket.equals("]")) {
+                pos++;
+                return Math.abs(result);
+            } else new IllegalArgumentException("ожидали ']' но появился символ " + closBracket + "");
+        }
+
         pos++;
         return Double.parseDouble(next);
     }
