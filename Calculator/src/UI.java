@@ -5,7 +5,7 @@ public class UI {
         rules();
         menu();
     }
-    public void rules(){
+    private void rules(){
         System.out.println("--------------------Правила ввода---------------------");
         System.out.println("-Числа и матеметические операторы вводить через пробел\n" +
                 "Пример: ( ( 5 + 2 ) * 2 ) / 1.5\n" +
